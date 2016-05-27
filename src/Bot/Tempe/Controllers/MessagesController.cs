@@ -60,8 +60,14 @@ namespace Tempe
 
         private string GetLatestImageUrl()
         {
-            var url = "http://iluvesports.com/wp-content/uploads/2014/09/pro-skateboarders-of-all-time1.jpg";
-            return url;
+            WebClient client = new WebClient();
+            string downloadString = client.DownloadString(IMAGE_ENDPOINT);
+            
+            var s = downloadString.Replace("<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">", "")
+                                  .Replace("</string>", "")
+                                  .Replace("\"", "")
+                                  .Trim();
+            return s;
         }
         
 

@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
 
@@ -89,7 +78,7 @@ namespace TempeiCapture
                 var blobClient = cloudStorageAccount.CreateCloudBlobClient();
                 var container = blobClient.GetContainerReference("photos");
                 await container.CreateIfNotExistsAsync();
-                var fileName = "photo" +DateTime.Now.ToString("yyyyMMdd - hh:mm::ss - fff") + ".jpg";
+                var fileName = "photo" +DateTime.Now.ToString("yyyyMMddhhmmss") + ".jpg";
                 var blockBlob = container.GetBlockBlobReference(fileName);
                 await blockBlob.UploadFromFileAsync(photoStorageFile);
 

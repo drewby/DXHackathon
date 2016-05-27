@@ -36,7 +36,8 @@
       <LibraryDependencies>wiringPi</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>
-      <Command>gpio export 17 out</Command>
+      <Command>
+      </Command>
       <Message>export pin 17 using the gpio utility so that we can execute the blink program without sudo</Message>
     </RemotePostBuildEvent>
   </ItemDefinitionGroup>
@@ -50,7 +51,11 @@
     </RemotePostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bme280.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bme280.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

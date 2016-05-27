@@ -13,3 +13,4 @@ numl.repl/*
 TestResults/*
 .vs/*
 *.lock.*
+*.vc.db
